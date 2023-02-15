@@ -59,6 +59,7 @@ $ npm run start:prod
 | last_name | String |
 | email | String |
 | password | String |
+| registeredSince | Date |
 
 ### Address Model
 |  Column | Type | Description
@@ -87,5 +88,5 @@ $ npm run start:prod
 | import  | `POST`  | `/addresses/import/:addressID` | - | Required |
 | findByID | `GET`  | `/addresses/:addressID` | - | Required |
 | find all | `GET`  | `/addresses` | - | Required |
-| find all sorted by name | `GET`  | `/my/link` | - | Required |
-| search by name | `GET`  | `/addresses/search?by=name` | - | Required |
+| find all sorted by name | `GET`  | `/addresses/sorted?by=name` | - | Required |
+| search by name | `GET`  | `/addresses/search?name={name of user(s) to search for}` | - | Required |
