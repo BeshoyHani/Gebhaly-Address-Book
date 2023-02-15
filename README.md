@@ -102,5 +102,5 @@ $ npm run start:prod
 | import  | `POST`  | `/addresses/import/:addressID` | - | Required |
 | findByID | `GET`  | `/addresses/:addressID` | - | Required |
 | find all | `GET`  | `/addresses` | - | Required |
-| find all sorted by name | `GET`  | `/my/link` | pageNo* | Required |
+| find all sorted by name | `GET`  | `/my/link` | - | Required |
 | search by name | `GET`  | `/addresses/search?by=name` | - | Required |
