@@ -53,14 +53,14 @@ export class AddressesController {
 
     @Post(':id')
     async delete(@Param('id') id: string, @Req() req) {
-        const userID = req.user.userID;
+        const userID = req.user.id;
         const result = await this.addressService.delete(id, userID);
         return result;
     }
 
     @Post('import/:id')
     async import(@Param('id') id: string, @Req() req) {
-        const userID = req.user.userID;
+        const userID = req.user.id;
         const result = await this.adressUtilityService.import(id, userID);
         return result;
     }

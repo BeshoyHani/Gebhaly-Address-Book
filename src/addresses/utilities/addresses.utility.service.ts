@@ -38,7 +38,6 @@ export class AddressUtiltyService {
                 address,
                 phone
             };
-
             return await this.addressService.create(addressInfo, currentUserID);
 
         } else {
