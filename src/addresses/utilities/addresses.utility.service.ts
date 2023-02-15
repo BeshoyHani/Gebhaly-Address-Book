@@ -13,8 +13,8 @@ export class AddressUtiltyService {
                 { userID: userID },
                 {
                     $or: [
-                        {first_name: { "$regex": name, "$options": "i" }},
-                        {last_name: { "$regex": name, "$options": "i" }},
+                        { first_name: { "$regex": name, "$options": "i" } },
+                        { last_name: { "$regex": name, "$options": "i" } },
                     ]
                 }
             ]
@@ -30,7 +30,7 @@ export class AddressUtiltyService {
     async import(id: string, currentUserID: string): Promise<IAddress> {
         const _address: IAddress = await this.addressModel.findById(id);
         if (_address) {
-            const { userID, first_name, last_name, address, phone} = _address;
+            const { userID, first_name, last_name, address, phone } = _address;
             const addressInfo: IAddress = {
                 userID: currentUserID,
                 first_name,
