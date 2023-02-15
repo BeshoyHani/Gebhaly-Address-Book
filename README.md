@@ -39,7 +39,7 @@ Simple Address Book API built with Nest.js
 - JsonWebToken
 - bcrypt: `To hash password before storing it`
 - passport: `uses jwt strategy to perform authentication and authorization`
-
+- class-validator: `for input validation`
 
 ## Installation
 
@@ -87,14 +87,14 @@ $ npm run start:prod
 
 ## End points
 ### Auth endPoints
-| Action | Method | Route | Parameters | Token|
+| Action | Method | Route | Body Parameters | Token|
 | ------------- | ------------- | -------------| ------------- | ------ |
 | Create Uset  | `POST`  | `/auth/register` | email <br> password <br>  first_name <br> last_name   | Not Required |
 | login | `POST`  | `/auth/login` | email <br> password | Not Required |
 
 
 ## Address endPoints
-| Action | Method | Route | Parameters | Token|
+| Action | Method | Route | Body Parameters | Token|
 | ------------- | ------------- | -------------| ------------- | ------ |
 | create  | `POST`  | `/addresses/create` | first_name <br> last_name <br>  address <br> phone   | Required |
 | update | `PUT`  | `/addresses/update/:addressID` | first_name <br> last_name <br>  address <br> phone | Required |
