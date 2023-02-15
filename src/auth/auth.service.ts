@@ -15,7 +15,7 @@ export class AuthService {
   }
 
   async login(email: string, password: string): Promise<SanitizedUserDto> {
-    let user = await this.userService.findUser(email);
+    let user = await this.userService.findUser(email.toLowerCase());
     if (!user) {
       throw new HttpException('user does not exist', HttpStatus.NOT_FOUND);
     }

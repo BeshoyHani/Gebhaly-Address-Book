@@ -9,6 +9,8 @@ export class UsersService {
     constructor(@InjectModel('User') private userModel: Model<UserDto>) { }
 
     async create(CreateUserDto: UserDto): Promise<SanitizedUserDto> {
+        CreateUserDto.email = CreateUserDto.email.toLowerCase();
+        
         const { email } = CreateUserDto;
         const user = await this.findUser(email);
         if (user) {
@@ -29,7 +31,7 @@ export class UsersService {
 
     // return user object without password
     private getUserWithoutPass(user: UserDto): SanitizedUserDto {
-        const {password, ...sanitizedUser} = user;
-        return sanitizedUser;
+        delete user['password'];
+        return user;
     }
 }

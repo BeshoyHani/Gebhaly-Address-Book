@@ -16,6 +16,5 @@ export class UserDto {
     @Length(8)
     password: string;
 
-    @IsDate()
     registeredSince: Date;
 }
