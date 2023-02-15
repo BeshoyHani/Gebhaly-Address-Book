@@ -4,19 +4,18 @@ import { AddressesService } from './addresses.service';
 import { IAddress } from './interface/address.interface';
 import { AddressUtiltyService } from './utilities/addresses.utility.service';
 
+@UseGuards(AuthGuard('jwt'))
 @Controller('addresses')
 export class AddressesController {
     constructor(private addressService: AddressesService, private adressUtilityService: AddressUtiltyService) { }
 
     @Get()
-    @UseGuards(AuthGuard('jwt'))
     async findAll(@Req() req) {
         const userID = req.user.id;
         return await this.addressService.findAll(userID);
     }
 
     @Get('sorted')
-    @UseGuards(AuthGuard('jwt'))
     async findSortedByName(@Query('by') query: string, @Req() req) {
         const userID = req.user.id;
         if (query.toLowerCase() === 'name')
@@ -24,14 +23,12 @@ export class AddressesController {
     }
 
     @Get('search')
-    @UseGuards(AuthGuard('jwt'))
     async findByName(@Query('name') name: string, @Req() req) {
         const userID = req.user.id;
         return await this.adressUtilityService.findByName(name, userID);
     }
 
     @Get(':id')
-    @UseGuards(AuthGuard('jwt'))
     async findById(@Param('id') id: string, @Req() req) {
         const result = await this.addressService.findById(id);
         const userID = req.user.id;
@@ -42,14 +39,12 @@ export class AddressesController {
     }
 
     @Post('create')
-    @UseGuards(AuthGuard('jwt'))
     async create(@Body() body: IAddress, @Req() req) {
         const userID =  req.user.id;
         return await this.addressService.create(body, userID);
     }
 
     @Put('update/:id')
-    @UseGuards(AuthGuard('jwt'))
     async update(@Param('id') id: string, @Body() body: IAddress, @Req() req) {
         const userID =  req.user.id;
         return await this.addressService.update(id, userID, body);
@@ -57,7 +52,6 @@ export class AddressesController {
 
 
     @Post(':id')
-    @UseGuards(AuthGuard('jwt'))
     async delete(@Param('id') id: string, @Req() req) {
         const userID = req.user.userID;
         const result = await this.addressService.delete(id, userID);
@@ -65,7 +59,6 @@ export class AddressesController {
     }
 
     @Post('import/:id')
-    @UseGuards(AuthGuard('jwt'))
     async import(@Param('id') id: string, @Req() req) {
         const userID = req.user.userID;
         const result = await this.adressUtilityService.import(id, userID);

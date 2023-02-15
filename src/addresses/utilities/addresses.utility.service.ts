@@ -28,12 +28,15 @@ export class AddressUtiltyService {
     }
 
     async import(id: string, currentUserID: string): Promise<IAddress> {
-        const address: IAddress = await this.addressModel.findById(id);
-        if (address) {
-            const { userID, ...importedAddress } = address;
+        const _address: IAddress = await this.addressModel.findById(id);
+        if (_address) {
+            const { userID, first_name, last_name, address, phone} = _address;
             const addressInfo: IAddress = {
                 userID: currentUserID,
-                ...importedAddress
+                first_name,
+                last_name,
+                address,
+                phone
             };
 
             return await this.addressService.create(addressInfo, currentUserID);
